@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ConsultarCredito">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsultarCreditoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultarCreditoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultarTrabajoDesempeñado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="valor" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultarTrabajoDesempeñadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultarTrabajoDesempeñadoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultarCreditoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultarCredito" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarCreditoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultarCreditoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarTrabajoDesempeñadoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultarTrabajoDesempeñado" />
+  </wsdl:message>
+  <wsdl:message name="ConsultarTrabajoDesempeñadoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultarTrabajoDesempeñadoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioClienteCredidoSoap">
+    <wsdl:operation name="ConsultarCredito">
+      <wsdl:input message="tns:ConsultarCreditoSoapIn" />
+      <wsdl:output message="tns:ConsultarCreditoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTrabajoDesempeñado">
+      <wsdl:input message="tns:ConsultarTrabajoDesempeñadoSoapIn" />
+      <wsdl:output message="tns:ConsultarTrabajoDesempeñadoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioClienteCredidoSoap" type="tns:ServicioClienteCredidoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultarCredito">
+      <soap:operation soapAction="http://tempuri.org/ConsultarCredito" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTrabajoDesempeñado">
+      <soap:operation soapAction="http://tempuri.org/ConsultarTrabajoDesempeñado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioClienteCredidoSoap12" type="tns:ServicioClienteCredidoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultarCredito">
+      <soap12:operation soapAction="http://tempuri.org/ConsultarCredito" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarTrabajoDesempeñado">
+      <soap12:operation soapAction="http://tempuri.org/ConsultarTrabajoDesempeñado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioClienteCredido">
+    <wsdl:port name="ServicioClienteCredidoSoap" binding="tns:ServicioClienteCredidoSoap">
+      <soap:address location="https://localhost:44303/ServicioClienteCredido.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioClienteCredidoSoap12" binding="tns:ServicioClienteCredidoSoap12">
+      <soap12:address location="https://localhost:44303/ServicioClienteCredido.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
